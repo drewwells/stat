@@ -12,7 +12,7 @@ Three reasons:
 
 ### API Interfaces:
 - It uses interfaces for the data access. So different data types can be used.
-- Two datatypes are pre-defined: Float64 and Int64.
+- Two datatypes are pre-defined: Float64Slice and IntSlice.
 - For sampling purposes there is a Strider type provided.
 
 Testing 100% pass. Testing covers the complete functionality.  
