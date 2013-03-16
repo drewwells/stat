@@ -27,37 +27,37 @@ import (
 )
 
 func ExampleMean() {
-	data := stat.Float64{17.2, 18.1, 16.5, 18.3, 12.6}
-	mean := stat.Mean(&data)
+	data := stat.Float64Slice{17.2, 18.1, 16.5, 18.3, 12.6}
+	mean := stat.Mean(data)
 	fmt.Printf("The sample mean is %g", mean)
 	// Output: The sample mean is 16.54
 }
 
 func ExampleVariance() {
-	data := stat.Float64{17.2, 18.1, 16.5, 18.3, 12.6}
-	variance := stat.Variance(&data)
+	data := stat.Float64Slice{17.2, 18.1, 16.5, 18.3, 12.6}
+	variance := stat.Variance(data)
 	fmt.Printf("The estimated variance is %.4f", variance)
 	// Output: The estimated variance is 5.3730
 }
 
 func ExampleMax() {
-	data := stat.Float64{17.2, 18.1, 16.5, 18.3, 12.6}
-	largest, index := stat.Max(&data)
+	data := stat.Float64Slice{17.2, 18.1, 16.5, 18.3, 12.6}
+	largest, index := stat.Max(data)
 	fmt.Printf("The largest value is %g and the index is %d", largest, index)
 	// Output: The largest value is 18.3 and the index is 3
 }
 
 func ExampleMin() {
-	data := stat.Float64{17.2, 18.1, 16.5, 18.3, 12.6}
-	smallest, index := stat.Min(&data)
+	data := stat.Float64Slice{17.2, 18.1, 16.5, 18.3, 12.6}
+	smallest, index := stat.Min(data)
 	fmt.Printf("The smallest value is %g and the index is %d", smallest, index)
 	// Output: The smallest value is 12.6 and the index is 4
 }
 
 func ExampleMedianFromSortedData() {
-	data := stat.Float64{17.2, 18.1, 16.5, 18.3, 12.6}
-	sort.Sort(&data)
-	median := stat.MedianFromSortedData(&data)
+	data := stat.Float64Slice{17.2, 18.1, 16.5, 18.3, 12.6}
+	sort.Sort(data)
+	median := stat.MedianFromSortedData(data)
 	fmt.Printf("Sorted dataset: %v\n", data)
 	fmt.Printf("The median is %g\n", median)
 	// Output:
@@ -66,10 +66,10 @@ func ExampleMedianFromSortedData() {
 }
 
 func ExampleQuantileFromSortedData() {
-	data := stat.Float64{17.2, 18.1, 16.5, 18.3, 12.6}
-	sort.Sort(&data)
-	upperq := stat.QuantileFromSortedData(&data, 0.75)
-	lowerq := stat.QuantileFromSortedData(&data, 0.25)
+	data := stat.Float64Slice{17.2, 18.1, 16.5, 18.3, 12.6}
+	sort.Sort(data)
+	upperq := stat.QuantileFromSortedData(data, 0.75)
+	lowerq := stat.QuantileFromSortedData(data, 0.25)
 
 	fmt.Printf("Sorted dataset: %v\n", data)
 	fmt.Printf("The upper quartile is %g\n", upperq)
@@ -81,12 +81,12 @@ func ExampleQuantileFromSortedData() {
 }
 
 func ExampleStrider() {
-	data := stat.Float64{
+	data := stat.Float64Slice{
 		.0421, .0941, .1064, .0242,
 		.1331, .0773, .0243, .0815,
 		.1186, .0356, .0728, .0999,
 		.0614, .0479}
-	strider := stat.NewStrider(&data, 4)
+	strider := stat.NewStrider(data, 4)
 	for i := 0; i < strider.Len(); i++ {
 		fmt.Println(strider.Get(i))
 	}
@@ -97,13 +97,13 @@ func ExampleStrider() {
 }
 
 func ExampleNewStrider() {
-	data := stat.Float64{
+	data := stat.Float64Slice{
 		.0421, .0941, .1064, .0242,
 		.1331, .0773, .0243, .0815,
 		.1186, .0356, .0728, .0999,
 		.0614, .0479}
-	strider := stat.NewStrider(&data, 4)
-	fmt.Printf("mean data is %.4f\n", stat.Mean(&data))
+	strider := stat.NewStrider(data, 4)
+	fmt.Printf("mean data is %.4f\n", stat.Mean(data))
 	fmt.Printf("mean strider is %.4f\n", stat.Mean(strider))
 	// Output:
 	// mean data is 0.0728

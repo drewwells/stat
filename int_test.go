@@ -1,6 +1,6 @@
 package stat
 
-/* int64_test.go
+/* int_test.go
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Jim Davies, Brian Gough
  * Copyright (C) 2012, 2013 G.vd.Schoot
@@ -25,32 +25,32 @@ import (
 	"testing"
 )
 
-func testInt64(t *testing.T, stridea, strideb int) {
+func testIntSlice(t *testing.T, stridea, strideb int) {
 
 	ina := 20
 	inb := 20
 
 	// sample sets of integers
 
-	raw1 := Int64{1, 2, 3, 4, 5, 6}
+	raw1 := IntSlice{1, 2, 3, 4, 5, 6}
 
-	irawa := Int64{
+	irawa := IntSlice{
 		17, 18, 16, 18, 12,
 		20, 18, 20, 20, 22,
 		20, 10, 8, 12, 16,
 		16, 18, 20, 18, 21}
 
-	irawb := Int64{
+	irawb := IntSlice{
 		19, 20, 22, 24, 10,
 		25, 20, 22, 21, 23,
 		20, 10, 12, 14, 12,
 		20, 22, 24, 23, 17}
 
-	test1_org := make(Int64, stridea*6)
+	test1_org := make(IntSlice, stridea*6)
 	test1 := NewSortStrider(test1_org, stridea)
-	igroupa_org := make(Int64, stridea*ina)
+	igroupa_org := make(IntSlice, stridea*ina)
 	igroupa := NewSortStrider(igroupa_org, stridea)
-	igroupb_org := make(Int64, strideb*inb)
+	igroupb_org := make(IntSlice, strideb*inb)
 	igroupb := NewSortStrider(igroupb_org, strideb)
 
 	rel := 1e-10
@@ -199,7 +199,7 @@ func testInt64(t *testing.T, stridea, strideb int) {
 			min_index, expected_min_index)
 	}
 
-	sorted_org := make(Int64, stridea*ina)
+	sorted_org := make(IntSlice, stridea*ina)
 	sorted := NewSortStrider(sorted_org, stridea)
 
 	for i := 0; i < ina; i++ {

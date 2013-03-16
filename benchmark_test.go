@@ -23,13 +23,13 @@ import (
 	"testing"
 )
 
-var data = Float64{1.0}
-var data1 = Float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
-var data2 = make(Float64, 10000)
+var data = Float64Slice{1.0}
+var data1 = Float64Slice{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
+var data2 = make(Float64Slice, 10000)
 
-var data_I = Int64{1}
-var data1_I = Int64{0, 1, 2, 3, 4, 5}
-var data2_I = make(Int64, 10000)
+var data_I = IntSlice{1}
+var data1_I = IntSlice{0, 1, 2, 3, 4, 5}
+var data2_I = make(IntSlice, 10000)
 
 func BenchmarkMean(b *testing.B) {
 	var f float64

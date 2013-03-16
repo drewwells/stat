@@ -27,33 +27,33 @@ import (
 )
 
 // Main test routine
-func testFloat64(t *testing.T, stridea, strideb int) {
+func testFloat64Slice(t *testing.T, stridea, strideb int) {
 
-	/* sample sets of doubles */
+	// sample sets of doubles
 	var i int
 	na := 14
 	nb := 14
 
-	rawa := Float64{
+	rawa := Float64Slice{
 		.0421, .0941, .1064, .0242, .1331,
 		.0773, .0243, .0815, .1186, .0356,
 		.0728, .0999, .0614, .0479}
 
-	rawb := Float64{
+	rawb := Float64Slice{
 		.1081, .0986, .1566, .1961, .1125,
 		.1942, .1079, .1021, .1583, .1673,
 		.1675, .1856, .1688, .1512}
 
-	raww := Float64{
+	raww := Float64Slice{
 		.0000, .0000, .0000, 3.000, .0000,
 		1.000, 1.000, 1.000, 0.000, .5000,
 		7.000, 5.000, 4.000, 0.123}
 
-	groupa_org := make(Float64, stridea*na)
+	groupa_org := make(Float64Slice, stridea*na)
 	groupa := NewSortStrider(groupa_org, stridea)
-	groupb_org := make(Float64, strideb*nb)
+	groupb_org := make(Float64Slice, strideb*nb)
 	groupb := NewStrider(groupb_org, strideb)
-	w_org := make(Float64, strideb*na)
+	w_org := make(Float64Slice, strideb*na)
 	w := NewStrider(w_org, strideb)
 
 	rel := 1e-10
@@ -271,7 +271,7 @@ func testFloat64(t *testing.T, stridea, strideb int) {
 			min_index, expected_min_index)
 	}
 
-	sorted_org := make(Float64, stridea*na)
+	sorted_org := make(Float64Slice, stridea*na)
 	sorted := NewSortStrider(sorted_org, stridea)
 
 	for i = 0; i < na; i++ {

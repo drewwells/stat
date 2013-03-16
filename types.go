@@ -29,32 +29,32 @@ type Interface interface {
 }
 
 //
-// Float64 is a predifined float64 slice type
+// Float64Slice is a predifined float64 slice type
 // which implements the Interface and Sort interfaces.
 //
-type Float64 []float64
+type Float64Slice []float64
 
-func (f Float64) Get(i int) float64 { return f[i] }
-func (f Float64) Len() int          { return len(f) }
+func (f Float64Slice) Get(i int) float64 { return f[i] }
+func (f Float64Slice) Len() int          { return len(f) }
 
-// The following methods are only required for Sort and SortStrider
+// The following methods are *only* required for Sort and SortStrider
 
-func (f Float64) Less(i, j int) bool { return f[i] < f[j] }
-func (f Float64) Swap(i, j int)      { f[i], f[j] = f[j], f[i] }
+func (f Float64Slice) Less(i, j int) bool { return f[i] < f[j] }
+func (f Float64Slice) Swap(i, j int)      { f[i], f[j] = f[j], f[i] }
 
 //
-// Int64 is a predifined int64 slice type
+// IntSlice is a predifined int64 slice type
 // which implements the Interface and Sort interfaces.
 //
-type Int64 []int64
+type IntSlice []int64
 
-func (f Int64) Get(i int) float64 { return float64(f[i]) }
-func (f Int64) Len() int          { return len(f) }
+func (f IntSlice) Get(i int) float64 { return float64(f[i]) }
+func (f IntSlice) Len() int          { return len(f) }
 
-// The following methods are only required for Sort and SortStrider
+// The following methods are *only* required for Sort and SortStrider
 
-func (f Int64) Less(i, j int) bool { return f[i] < f[j] }
-func (f Int64) Swap(i, j int)      { f[i], f[j] = f[j], f[i] }
+func (f IntSlice) Less(i, j int) bool { return f[i] < f[j] }
+func (f IntSlice) Swap(i, j int)      { f[i], f[j] = f[j], f[i] }
 
 //
 // Strider strides over the data, for sampling purposes.

@@ -69,8 +69,8 @@ func TestMain(t *testing.T) {
 			s2 = s1 - 1
 		}
 
-		testFloat64(t, s1, s2)
-		testInt64(t, s1, s2)
+		testFloat64Slice(t, s1, s2)
+		testIntSlice(t, s1, s2)
 	}
 
 	testNist()
