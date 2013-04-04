@@ -16,5 +16,5 @@ Three reasons:
 - For sampling purposes there is a Strider type provided.
 
 Testing 100% pass. Testing covers the complete functionality.  
-Tested on Debian6 32-bit and Windows 7 64-bit.
+Tested on Debian 6 and Windows 7, both 32- and 64-bit.
 
