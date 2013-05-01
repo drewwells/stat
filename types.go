@@ -1,3 +1,6 @@
+//
+// GNU GSL Statistics library (v1.15, GPLv3) implemented in Go
+//
 package stat
 
 /* types.go
