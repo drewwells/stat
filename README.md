@@ -1,4 +1,4 @@
-# Statistics
+# Statistics [![Build Status](https://travis-ci.org/grd/stat.png)](https://travis-ci.org/grd/stat)
 
 Pure [Go](http://www.golang.org) implementation of the [GSL Statistics library](http://www.gnu.org/software/gsl/manual/html_node/Statistics.html).
 
@@ -17,5 +17,3 @@ Three reasons:
 
 Testing 100% pass. Testing covers the complete functionality.  
 Tested on Debian 6 and Windows 7, both 32- and 64-bit.
-[![Build Status](https://travis-ci.org/grd/stat.png)](https://travis-ci.org/grd/stat)
-
