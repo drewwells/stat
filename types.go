@@ -4,20 +4,20 @@
 package stat
 
 /* types.go
- * 
+ *
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Jim Davies, Brian Gough
  * Copyright (C) 2012, 2013 G.vd.Schoot
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -58,6 +58,18 @@ func (f IntSlice) Len() int          { return len(f) }
 
 func (f IntSlice) Less(i, j int) bool { return f[i] < f[j] }
 func (f IntSlice) Swap(i, j int)      { f[i], f[j] = f[j], f[i] }
+
+// For cases that interfaces need to be appended, it will fail
+// if different datatypes are attempted to be appended
+func Append(data Interface, rest Interface) Interface {
+	switch data := data.(type) {
+	case Float64Slice:
+		return append(data, rest.(Float64Slice)...)
+	case IntSlice:
+		return append(data, rest.(IntSlice)...)
+	}
+	return nil
+}
 
 //
 // Strider strides over the data, for sampling purposes.
