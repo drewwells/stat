@@ -24,7 +24,7 @@ func CDF(df, t float64) float64 {
 	z := df / (t*t + df)
 	a := df / 2
 
-	num := fn.BetaIncReg(a, .5, z)
+	num := fn.IB(a, .5, z)
 
 	if t < 0 {
 		return 1 - num/2

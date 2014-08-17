@@ -8,33 +8,49 @@ import (
 func TestTtest(t *testing.T) {
 	f1, f2 := setup_ttest()
 	f, ff := Float64Slice(f1), Float64Slice(f2)
-
-	if tval := TTest(f, ff); tval-10.2321 > math.SmallestNonzeroFloat64 {
+	tval := TTest(f, ff)
+	if tval-10.2321 > math.SmallestNonzeroFloat64 {
 		t.Errorf("Invalid tvalue has: %f, wanted %f", tval, 10.232033)
 	}
 
 	if pvalue := TTestpvalue(f, ff, false); pvalue < math.SmallestNonzeroFloat64 {
 		t.Errorf("Invalid pvalue has: %f, wanted %f", pvalue, 0.0)
+		t.Errorf("T Stat: %f, Df: %f",
+			tval,
+			Freedom(Append(f, ff), true),
+		)
 	}
 
 	f, ff = Float64Slice([]float64{10, 20, 30, 40, 50, 60}),
 		Float64Slice([]float64{20, 30, 40, 50, 60, 70})
+	tval = TTest(f, ff)
+	if tval - -0.92582 > math.SmallestNonzeroFloat64 {
+		t.Errorf("Invalid tvalue has: %f, wanted %f")
+	}
 
 	if pvalue := TTestpvalue(f, ff, false); pvalue-0.18817 > math.SmallestNonzeroFloat64 {
 		t.Errorf("Invalid pvalue has: %f, wanted %f", pvalue, 0.18817)
+		t.Errorf("T Stat: %f, Df: %f",
+			tval,
+			Freedom(Append(f, ff), true),
+		)
 	}
 
 	//Wikipedia example
 	f, ff =
 		Float64Slice([]float64{30.02, 29.99, 30.11, 29.97, 30.01, 29.99}),
 		Float64Slice([]float64{29.89, 29.93, 29.72, 29.98, 30.02, 29.98})
-
-	if tval := TTest(f, ff); tval-1.959006 > math.SmallestNonzeroFloat64 {
+	tval = TTest(f, ff)
+	if tval-1.959006 > math.SmallestNonzeroFloat64 {
 		t.Errorf("Invalid tvalue has: %f, wanted %f", tval, 1.959006)
 	}
 
 	if pvalue := TTestpvalue(f, ff, false); pvalue != 0.045 {
 		t.Errorf("Invalid pvalue has: %f, wanted %f", pvalue, 0.045)
+		t.Errorf("T Stat: %f, Df: %f",
+			tval,
+			Freedom(Append(f, ff), true),
+		)
 	}
 }
 

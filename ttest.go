@@ -21,7 +21,6 @@ package stat
  */
 
 import (
-	"fmt"
 	"log"
 	"math"
 )
@@ -48,11 +47,7 @@ func TTestpvalue(data1, data2 Interface, twoTail bool) float64 {
 
 	if !twoTail {
 		t := TTest(data1, data2)
-
-		fmt.Printf("%12f Tvalue\n", t)
 		df := Freedom(Append(data1, data2), true)
-		fmt.Printf("%12f DF\n", df)
-
 		return CDF(df, math.Abs(t))
 	}
 	log.Fatal("Two tail pvalue is not implemented")
