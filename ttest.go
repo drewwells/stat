@@ -53,11 +53,7 @@ func TTestpvalue(data1, data2 Interface, twoTail bool) float64 {
 		df := Freedom(Append(data1, data2), true)
 		fmt.Printf("%12f DF\n", df)
 
-		if t < 0 {
-			return CDF(df, -t)
-		} else {
-			return CDF(df, t)
-		}
+		return CDF(df, math.Abs(t))
 	}
 	log.Fatal("Two tail pvalue is not implemented")
 	return 0
